@@ -13,15 +13,17 @@ If you are using the standard URL for a GitHub Pages project (`username.github.i
 
 In `\_config.yml`, set the `baseurl` option to `/project-name` where the project name is the name of the repository. Keep the leading slash and be sure to exclude any trailing slash.
 
-Now you'll need to change the way you do links in your templates and posts, in the following two ways:
+To create relative links to assets (Javascript or CSS files, images, videos, etc.), reference them using the `site.baseurl` variable: `{{ site.baseurl}}/path/to/file.jpg`. Do not forget the slash between the variable and the rest of the file path.
 
-When referencing JS or CSS files, do it like this: {{ site.baseurl }}/path/to/css.css -- note the slash immediately following the variable (just before "path").
+Permalinks or internal links to posts should use `{{ site.baseurl }}{{ post.url }}` with no slash between variables.
 
-When doing permalinks or internal links, do it like this: {{ site.baseurl }}{{ post.url }} -- note that there is no slash between the two variables.
+To work using localhost, override the baseurl option with an empty string. Run `jekyll serve` from the command line with the following:
 
-Finally, if you'd like to preview your site before committing/deploying using jekyll serve, be sure to pass an empty string to the --baseurl option, so that you can view everything at localhost:4000 normally (without /project-name getting in there to muck everything up): jekyll serve --baseurl ''
+```
+jekyll serve --baseurl ""
+```
 
-This way you can preview your site locally from the site root on localhost, but when GitHub generates your pages from the gh-pages branch all the URLs will start with /project-name and resolve properly.
+The required folder for the built page on GitHub Pages should not interfere with the localhost:4000 version of the page. It also allows GitHub to properly build the live page.
 
 ### Embedded local video
 
