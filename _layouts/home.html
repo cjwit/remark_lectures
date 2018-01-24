@@ -8,10 +8,10 @@ layout: default
 
 	<ul class="post-list">
 
-		{% for page in pages %}
+		{% for page in site.pages %}
 			{% if page.path contains "assets" %}
 			{% else %}
-				{% if page.path contains "/" and page.path %}
+				{% if page.path contains "/" %}
 					{% assign path = page.path | split: "/" %}
 					<li>
 						<span class="post-meta">MUCT {{ path | first }}</span>
