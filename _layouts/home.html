@@ -8,7 +8,7 @@ layout: default
 
 	<ul class="post-list">
 
-		{% for page in site.pages %}
+		{% for page in pages %}
 			{% if page.path contains "assets" %}
 			{% else %}
 				{% if page.path contains "/" and page.path %}
