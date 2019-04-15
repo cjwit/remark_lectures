@@ -4,24 +4,55 @@ layout: default
 
 <div class="home">
 
-	<h1 class="page-heading">Lecture Slides</h1>
+	<h1 class="page-heading">Lecture Slides for MUCT 1250</h1>
 
 	<ul class="post-list">
 
-		{% for page in site.pages %}
+		{% assign sortedPages = site.pages | sort: 'title' %}
+
+{% comment %}
+MUCT 1250 lectures
+{% endcomment %}
+
+		{% for page in sortedPages %}
 			{% if page.path contains "assets" %}
 			{% else %}
 				{% if page.path contains "/" %}
-					{% assign path = page.path | split: "/" %}
-					<li>
-						<span class="post-meta">MUCT {{ path | first }}</span>
-						<h2>
-							<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
-						</h2>
-					</li>
+					{% assign classNumber = page.path | split: "/" | first %}
+
+					{% if classNumber == "1250" %}
+						<li>
+							<h2>
+								<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+							</h2>
+						</li>
+					{% endif %}
 				{% endif %}
 			{% endif %}
 		{% endfor %}
+
+<h1 class="page-heading">Lecture Slides for MUCT 4310</h1>
+
+	{% comment %}
+	MUCT 4310 lectures
+	{% endcomment %}
+
+			{% for page in sortedPages %}
+				{% if page.path contains "assets" %}
+				{% else %}
+					{% if page.path contains "/" %}
+						{% assign classNumber = page.path | split: "/" | first %}
+
+						{% if classNumber == "4310" %}
+							<li>
+								<h2>
+									<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+								</h2>
+							</li>
+						{% endif %}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
 
 	</ul>
 </div>
