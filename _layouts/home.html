@@ -36,7 +36,11 @@ MUCT 1250 lectures
 			{% endif %}
 		{% endfor %}
 
+		</ul>
+
 <h1>Lecture Slides for MUCT 4310</h1>
+
+<ul class="post-list">
 
 	{% comment %}
 	MUCT 4310 lectures
@@ -60,4 +64,32 @@ MUCT 1250 lectures
 			{% endfor %}
 
 	</ul>
+
+	<h1>Other lectures</h1>
+
+	<ul class="post-list">
+
+		{% comment %}
+		other lectures
+		{% endcomment %}
+
+				{% for page in sortedPages %}
+					{% if page.path contains "assets" %}
+					{% else %}
+						{% if page.path contains "/" %}
+							{% assign classNumber = page.path | split: "/" | first %}
+
+							{% if classNumber == "other" %}
+								<li>
+									<h2>
+										<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+									</h2>
+								</li>
+							{% endif %}
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+
+		</ul>
+
 </div>
