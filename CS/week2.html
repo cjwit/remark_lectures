@@ -1,0 +1,133 @@
+---
+layout: presentation
+title: Beck, XP
+---
+
+class: middle, center
+
+# Embracing Change with Extreme Programming
+
+## Kent Beck
+
+## Given by Christopher Witulski
+
+---
+
+# Author: Kent Beck ([@KentBeck](https://twitter.com/KentBeck?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor))
+
+* Author of books related to XP and TDD
+  * Association with XP, Agile, CRC cards
+  * Support of TDD, wrote SUnit (Smalltalk), which led to JUnit and others
+* H-index: 6, citations: 3,614 (semanticscholar.org)
+
+--
+
+## Embracing Change with Extreme Programming
+
+* Published in *Computer* 32, issue 10 (1999)
+  * Labeled as a "Cover Feature"
+  * Cited by 1,490 (Google Scholar)
+
+---
+
+# Research questions
+
+### "In the beginning, there was waterfall [...] All was not well." (70)
+
+* An iterative experiment
+  * The XP process is the experiment, as described in the conclusions
+  * Sidebar testimonials provide the results
+
+* Questions
+  * How to avoid pitfalls of waterfall to reduce the cost of big changes?
+
+### These questions bleed into...
+
+---
+
+# Motivation
+
+* Customers contradict themselves
+  * Change their mind
+  * Requirements may be vague or unknown
+
+* Big changes late in the process are expensive
+  * How to avoid early decisions and commitments
+  * How to leverage other advances like modular programming, information hiding, etc.
+
+---
+
+# Main theory
+
+### Put the waterfall in the blender (70)
+
+.center[.image-100[![Waterfall, iterative, and XP processes]({{ site.baseurl }}/assets/waterfall-xp.png)]
+
+### Comparing the waterfall, iterative (spiral, and XP processes)]
+
+---
+
+# Main theory
+
+* Present a comprehensive software engineering process and (physical) environment
+  * Detailed components in sidebar on page 71
+* Development cycle based on user stories that are
+  * business-oriented (customer priorities)
+  * testable
+  * estimable
+* Focus
+  * Customer priorities
+  * Social aspect of development/team cohesion (includes specific details like pair programming and open workspaces)
+  * Clear and frequent iterations
+
+---
+
+# Tests
+
+* Determined by the customer in frequent meetings
+  * Based on what "would convince them that the stories for an iteration are complete" (74)
+* Coded first
+  * Implementation depends on balance between "clean" or "ugly" options
+  * When going "ugly," save refactoring opportunity for future iterations
+* Pair programming is central
+  * Alleviates difficulty of testing your own code
+* Automated testing builds confidence over time
+
+---
+
+# How XP handles problems
+
+* Underestimation, uncooperative customers
+  * Unsurprisingly, requires "lots of practice estimating" (75)
+  * XP prioritizes communication: solve the problem internally (locate issues in the process), then communicate
+  * System is fully dependent on trust both within the team and with the customer
+* Turnover: pair programming and testing
+  * No one exclusively knows "secrets" (76)
+  * New members can work with experienced ones to learn the system
+  * Testing prevents unfamiliar new team members from breaking things
+  * Discussion of team and fit: "XP is an intensely social activity, and not everyone can learn it." (76)
+
+---
+
+# Conclusions
+
+### "XP is by no means a finished, polished idea."
+
+* Development process itself is iterative...
+  * Regarding changing requirements: earlier versions of XP planned releases in advance, this version prioritizes stories at each iteration (more flexibility)
+* Limits are not clear, but trying XP requires courage
+* Presents a strategy of adopting pieces for the "worst problem in your current process"
+  * Then do it again (iterate)
+
+---
+
+# Thoughts and future work
+
+* Obviously influential since 1999: Agile, TDD, etc.
+* Assumes a certain social life around development and customer interaction
+  * Accounts for customers not being oracles
+  * Defines practice (pair programming, TDD) and environment (open) that may have hard limits
+  * Requiring flexibility is something of a paradox
+* The anthropologist in me asks:
+  * How has this impacted things like government contracts/classified work? 
+  * What about when extreme differences exist in one company's projects (like Google)?
