@@ -15,53 +15,82 @@ layout: default
 
 		{% assign sortedPages = site.pages | sort: 'title' %}
 
-{% comment %}
-MUCT 1250 lectures
-{% endcomment %}
+		{% comment %}
+		MUCT 1250 lectures
+		{% endcomment %}
 
 		{% for page in sortedPages %}
-			{% if page.path contains "assets" %}
-			{% else %}
-				{% if page.path contains "/" %}
-					{% assign classNumber = page.path | split: "/" | first %}
+		{% if page.path contains "assets" %}
+		{% else %}
+		{% if page.path contains "/" %}
+		{% assign classNumber = page.path | split: "/" | first %}
 
-					{% if classNumber == "1250" %}
-						<li>
-							<h2>
-								<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
-							</h2>
-						</li>
-					{% endif %}
-				{% endif %}
-			{% endif %}
+		{% if classNumber == "1250" %}
+		<li>
+			<h2>
+				<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+			</h2>
+		</li>
+		{% endif %}
+		{% endif %}
+		{% endif %}
 		{% endfor %}
 
-		</ul>
+	</ul>
 
-<h1>Lecture Slides for MUCT 4310</h1>
+	<h1>Lecture Slides for MUCT 2360</h1>
 
-<ul class="post-list">
+	<ul class="post-list">
 
-	{% comment %}
-	MUCT 4310 lectures
-	{% endcomment %}
+		{% assign sortedPages = site.pages | sort: 'title' %}
 
-			{% for page in sortedPages %}
-				{% if page.path contains "assets" %}
-				{% else %}
-					{% if page.path contains "/" %}
-						{% assign classNumber = page.path | split: "/" | first %}
+		{% comment %}
+		MUCT 2360 lectures
+		{% endcomment %}
 
-						{% if classNumber == "4310" %}
-							<li>
-								<h2>
-									<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
-								</h2>
-							</li>
-						{% endif %}
-					{% endif %}
-				{% endif %}
-			{% endfor %}
+		{% for page in sortedPages %}
+		{% if page.path contains "assets" %}
+		{% else %}
+		{% if page.path contains "/" %}
+		{% assign classNumber = page.path | split: "/" | first %}
+
+		{% if classNumber == "2360" %}
+		<li>
+			<h2>
+				<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+			</h2>
+		</li>
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+
+	</ul>
+
+	<h1>Lecture Slides for MUCT 4310</h1>
+
+	<ul class="post-list">
+
+		{% comment %}
+		MUCT 4310 lectures
+		{% endcomment %}
+
+		{% for page in sortedPages %}
+		{% if page.path contains "assets" %}
+		{% else %}
+		{% if page.path contains "/" %}
+		{% assign classNumber = page.path | split: "/" | first %}
+
+		{% if classNumber == "4310" %}
+		<li>
+			<h2>
+				<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+			</h2>
+		</li>
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
 
 	</ul>
 
@@ -73,23 +102,23 @@ MUCT 1250 lectures
 		other lectures
 		{% endcomment %}
 
-				{% for page in sortedPages %}
-					{% if page.path contains "assets" %}
-					{% else %}
-						{% if page.path contains "/" %}
-							{% assign classNumber = page.path | split: "/" | first %}
+		{% for page in sortedPages %}
+		{% if page.path contains "assets" %}
+		{% else %}
+		{% if page.path contains "/" %}
+		{% assign classNumber = page.path | split: "/" | first %}
 
-							{% if classNumber == "other" %}
-								<li>
-									<h2>
-										<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
-									</h2>
-								</li>
-							{% endif %}
-						{% endif %}
-					{% endif %}
-				{% endfor %}
+		{% if classNumber == "other" %}
+		<li>
+			<h2>
+				<a class="post-link" href="{{ page.path }}">{{ page.title }}</a>
+			</h2>
+		</li>
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
 
-		</ul>
+	</ul>
 
 </div>
