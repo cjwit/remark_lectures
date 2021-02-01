@@ -1,0 +1,237 @@
+---
+layout: presentation
+title: Godfrey et al, Software Evolution
+---
+
+class: middle, center
+
+# A Complexity Measure
+
+## Thomas J. McCabe
+
+## Given by Christopher Witulski
+
+---
+
+# Author
+
+.image-float-right[![Thomas J. McCabe]({{ site.baseurl }}/assets/McCabe.jpg)]
+* Thomas J. McCabe
+  * Author of *Structured Testing* (1983)
+  * Articles on testing and complexity through the 1980s and 1990s
+  * Employed by DoD, NSA, university teaching
+
+* "A Complexity Measure" (1976)
+  * *IEEE Transactions on Software Engineering*, Volume SE-2, issue: 4
+  * 7,773 citations according to Google Scholar
+
+---
+
+# Research question and motivations
+
+* How to modularize a software system so that it's testable and maintainable?
+  * Testing takes half of development time
+  * Maintenance consumes most dollars
+
+* Can we quantitatively measure effort that will be required? 
+  * Past attempts limit program size
+
+### With a measure of system complexity based on control flow
+
+---
+
+# Motivations, goals
+
+* Describe complexity measure through graphing
+  * Show its use for managing and controlling complexity
+
+* Present examples that correlate with intuition
+  * Complexity is related to decision structure, not program size
+
+* Demonstrate issues related to non-structured control flow
+  * ... and the difficulties in measuring it
+  * Examples show relationship between structure and reducibility
+
+* Relationship between testing strategy and complexity
+
+---
+
+# Complexity measure
+
+* Measure and control the number of paths through a program
+  * Avoid infinite paths (backward branches)
+
+* Cyclomatic number
+  * Equal to the max number of *linearly independent circuits*
+  * Reduces everything but data flow control points (visualized in graphs)
+  * Sets an upper limit to avoid issues with infinite paths/loops
+
+* *v(G) = e - n + 2p*
+  * Cyclomatic number of graph *G*
+  * *n*: number of vertices
+  * *e*: number of edges
+  * *p*: connected components
+
+---
+
+# Cyclomatic number
+
+* *v(G) = e - n + 2p*
+
+  * Cyclomatic number of graph *G*
+  * *n*: number of vertices
+  * *e*: number of edges
+  * *p*: connected components
+
+.center.image-80[![Example from page 310]({{ site.baseurl }}/assets/mccabe1b.jpeg)]
+
+---
+
+# Observations from the graphs
+
+* The graphs can show style through patterns
+
+  * Like a programmer's "affinity for sequencing numerous simple loops"
+
+.center.image-30[![Example from 313]({{ site.baseurl }}/assets/mccabe2.png)]
+
+---
+
+# Observations from the graphs
+
+* The graphs can show style through patterns
+  * Like a programmer's "affinity for sequencing numerous simple loops"
+
+* Graphs can help advisors to limit software by complexity rather than size
+  * with 10 as a reasonable, "but not magical" limit
+  * Some exceptions, like a large case statement
+
+* Prioritizes modularity and eases testing
+
+---
+
+# What is p? Decomposition
+
+* Number of distinct modules
+
+  * Control program calling subroutines
+  * *v(MuAuB) = e - n + 2p*
+
+  .center.image-80[![Example from page 314]({{ site.baseurl }}/assets/mccabe3a.jpeg)]
+
+---
+
+# What is p? Decomposition
+
+* Number of distinct modules
+
+  * Control program calling subroutines
+  * *v(MuAuB) = e - n + 2p* = 13 - 13 + (2 * 3) = 6
+
+  .center.image-80[![Example from page 314]({{ site.baseurl }}/assets/mccabe3b.jpeg)]
+
+---
+
+# What is p? Decomposition
+
+* Number of distinct modules
+
+  * Control program calling subroutines
+  * *v(MuAuB) = v(M) + v(A) + v(B)* = 1 + 2 + 3 = 6
+
+  .center.image-80[![Example from page 314]({{ site.baseurl }}/assets/mccabe3c.jpeg)]
+
+---
+
+# Simplification
+
+* Where *p*=1: predicate nodes + 1
+
+  * Counting the number of decision points
+  * Because of compound decisions, it can be easier to count conditionals
+
+.center.image-80[![Example from page 314]({{ site.baseurl }}/assets/mccabe4.jpeg)]
+
+---
+
+# Simplification
+
+* Where *p*=1: predicate nodes + 1
+
+  * Counting the number of decision points
+  * Because of compound decisions, it can be easier to count conditionals
+
+* From the graph: counting planes (spaces divided by edges)
+
+.center.image-30[![Example from page 315]({{ site.baseurl }}/assets/mccabePlanes.png)]
+
+---
+
+# Non-structured programming
+
+* Issues in testing resulting from:
+  * Branching into or out of a loop
+  * Branching into or out of decision
+
+* Graphs make structures clear
+  * Easier to avoid difficult-to-test code
+  * See examples on pages 315-7
+
+---
+
+# Complexity and testing
+
+* Measure should relate to the amount of work required to test
+
+* If the number of tested paths is less than complexity, then one of these is true:
+  * More testing is necessary
+  * Flow graph can be reduced (see example on page 318)
+  * Portions of the code can be reduced (complexity was increased to save space)
+
+.center.image-60[![Example from page 318]({{ site.baseurl }}/assets/mccabe5a.jpeg)]
+
+---
+
+# Complexity and testing
+
+* Measure should relate to the amount of work required to test
+
+* If the number of tested paths is less than complexity, then one of these is true:
+  * More testing is necessary
+  * Flow graph can be reduced (see example on page 318)
+  * Portions of the code can be reduced (complexity was increased to save space)
+
+.center.image-60[![Example from page 318]({{ site.baseurl }}/assets/mccabe5b.jpeg)]
+
+---
+
+# Complexity and testing
+
+* Measure should relate to the amount of work required to test
+
+* If the number of tested paths is less than complexity, then one of these is true:
+  * More testing is necessary
+  * Flow graph can be reduced (see example on page 318)
+  * Portions of the code can be reduced (complexity was increased to save space)
+
+* Benefits
+  * Cyclomatic number is the minimum number of paths to test
+  * Its may help testers to locate additional testing paths
+
+* This doesn't prove that software works, it only brings out more bugs
+
+---
+
+# Thoughts
+
+* Obviously influential
+  * Potential for understanding systems and development
+  * Still taught (it was in a class last semester)
+
+* Limited article scope
+  * Prioritization of one metric
+
+* Begs some questions:
+  * How do these benefits compare to others (eg. program size)
+  * What are some costs of removing complexity?
+  * Does lower complexity impact other metrics in important ways?
