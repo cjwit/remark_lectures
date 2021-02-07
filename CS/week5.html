@@ -1,0 +1,244 @@
+---
+layout: presentation
+title: Codoban et al, Software History under the Lens
+---
+
+class: middle, center
+
+# Software History under the Lens:
+
+## A Study on Why and How Developers Examine It
+
+### Mihai Codoban, Sruti Srinivasa Ragavan, Danny Dig, Brian Bailey
+
+### Given by Christopher Witulski
+
+---
+
+# Authors
+
+* Mihai Codoban: Oregon State University, Microsoft
+  * Interests: evolution, comprehension
+  * H-index of 5, 389 citations
+* Sruti Srinivasa Ragavan: Microsoft Research
+  * Interests: human computer interaction, end-user development
+  * H-index of 3, 100 citations
+* Danny Dig: University of Colorado
+  * Interests: refactoring, program analysis, parallel programming
+  * H-index of 38, 5,045 citations
+* Brian Bailey: University of Illinois
+  * Interests: human computer interaction
+  * H-index of 43, 7,536 citations
+
+---
+
+# Authors
+
+* "Software History under the Lens" (2015)
+  * *2015 IEEE International Conference on Software Maintenance and Evolution (ICSME)*
+  * Conference in Bremen, Germany
+  * 54 citations on Google Scholar
+  * 416 views on [ieeexplore.ieee.org](https://ieeexplore.ieee.org/abstract/document/7332446)
+
+---
+
+# Research questions
+
+1. Why do developers examine software history?
+  * And what counts (when does history begin)
+2. How do developers use software history?
+3. What challenges do they face when examining history?
+  * Including VCS limits, like uncommitted histories
+4. What helps them and what do they wish they had?
+  * Combining tools in practice may not satisfy needs
+
+---
+
+# Motivations
+
+* Understanding how developers study software history
+  * Avoiding wrong assumptions
+* Qualitative research showing different developer motivations
+  * Interviews, surveys
+* All history might not be equal
+  * Contrary to assumptions based on commits, VCS workflows
+* VCS gives a temporal view, may not solve the problem
+  * Uncommitted changes are not included
+  * Change volume can hide bugs
+  * Tracing changes gets difficult without grouping commits
+
+---
+
+# A Lens-based history
+
+* Proposing a "motivation-based model for software history"
+  * Multiple lenses into history address different needs
+* Three lenses
+  * *Immediate*: structuring uncommitted changes
+  * *Awareness*: understanding/awareness of latest changes
+  * *Archaeology*: recovering buried knowledge, providing context
+* A model for history based on developer use and need
+  * And qualitative data
+
+---
+
+# Methodology
+
+* 14 interviews from across 11 companies
+  * Developers with 13 years average experience
+  * Use of different VCS systems
+  * 40-90 minute interviews, paid $50
+  * Questions about why and how each uses history
+  * Coded interviews according to standard practice
+* 217 surveys with 16 questions
+  * 84% of respondents from industry
+  * 80% with > 5 years experience
+
+---
+
+# Results: what history to use
+
+* Old and recent history serve different needs
+
+### Recent history motivations include
+
+* What is going on *that I need to know about*?
+  * Survey participants didn't want to know about every change
+* What did I do and where am I going?
+  * Using commits to understand work in progress
+  * Intermediary commits as subtask list
+  * Backtracking to previous commit when hitting a dead end
+
+---
+
+# Results: what history to use
+
+* Old and recent history serve different needs
+
+### Old history motivations include
+
+* Why is it "this way"?
+  * Discover rational of code to check functionality of current work
+  * Reverse engineer requirements from code
+* Understand evolution
+  * To better comprehend architecture, decisions, frequent bugs
+
+---
+
+# Results: what history to use
+
+* Old and recent history serve different needs
+
+### Some motivations use both old and recent histories
+
+* Debugging
+  * Discover where a problem enters the code
+* Change impact analysis
+  * Developing a better understanding of module interaction
+* Selectively compose changes
+  * Implementing changes across branches, modules
+
+---
+
+# Results: how to use history
+
+* Descriptions of how developers accomplish their goals
+* Older history
+  * Finding commits
+  * Traversing history/commits
+  * Understanding commits
+* Keeping up with changes/awareness
+  * Communication preferences (frequency, which notifications)
+  * Communication systems (email, F2F, reading VCS)
+* Locating revert points for backtracking
+  * "Ensuring a steady stream of good commits"
+  * Building confidence, creating a return point for the future
+
+---
+
+# Results: challenges, solutions, and needs
+
+## Four themes
+
+* Information mess
+* Knowledge fragmentation
+* Understanding history
+* Tool limitations
+
+---
+
+# Challenges: Information mess
+
+* The problem
+  * Managing committed and uncommitted changes
+  * Locating a commit, keeping up with changes, missing changes
+  * Tangled changes
+* How it's handled
+  * Diff reports, which can be hard to read/noisy
+  * Commit messages, which can be inconsistent, dense
+* Potential improvements
+  * Grouping related commits
+  * Filtering using words, tags
+  * Better history structure
+  * Each could be improved, absence of tools for uncommitted changes
+
+---
+
+# Challenges: Knowledge fragmentation
+
+* The problem
+  * Need to understand context for changes including requirements, architecture
+  * Traceability, ability to see history of a snippet or block of code
+  * History as it relates to requirements
+* How it's handled
+  * Issue tracking and aggregators
+* Potential improvements
+  * Show context of a change to a piece of code
+  * Grouping and overlapping histories
+  * UML or other model showing architectural changes as a visualization
+
+---
+
+# Challenges: History, tool limitations
+
+* The problem
+  * Old history is hard to understand, loss of context
+  * Non-informative commit messages, different preferences
+* How it's handled
+  * Good knowledge of code/hierarchy/control flow helps
+  * Commit message style expectations 
+  * Software engineering practices (continuous integration, testing, reviews)
+* Limits to current tooling that could be improved
+  * Visualizing and tracking history, comparisons
+  * Organizing history in different ways, depending on the task
+  * Usability issues like moved/renamed files, learning different systems
+  * Selectivity in change notifications
+
+---
+
+# The three lenses
+
+* Immediate
+  * History begins before commits
+  * Tools to work with uncommitted changes
+* Awareness
+  * Recent history to keep track of changes and how their work integrates
+  * Tools for personalized updates based on tasks, code region
+  * Models to visualize current changes and personal in-progress work
+* Archeology
+  * Passive history as reference for understanding
+  * Tools for retrieving context of code over history
+  * Visualization models for software history
+* Engage and represent recent and older history differently
+
+---
+
+# Thoughts and considerations
+
+* Focus on what real people are doing and need
+  * Small, but useful, sample for qualitative research
+  * Survey tool is available, good response from social media
+  * How does this relate to proprietary market research efforts? (Two authors from Microsoft Research)
+* Provides clear opportunities for further work
+  * Focus on development work: how to solve problems
+  * Leaves question of research more open
