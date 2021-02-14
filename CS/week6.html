@@ -1,0 +1,121 @@
+---
+layout: presentation
+title: Balzer et al, Voronoi Treemaps
+---
+
+class: middle, center
+
+# Voronoi Treemaps for the Visualization of Software Metrics
+
+## Michael Balzer, Oliver Deussen, and Claus Lewerentz
+
+## Given by Christopher Witulski
+
+---
+
+# Authors and metrics
+
+* Michael  Balzer: University of Konstanz
+  * Visualization, computer graphics
+* Oliver Deussen: University of Konstanz
+  * Computer graphics, visualization, modelling
+  * 10,748 citations, h-index of 49
+* Claus Lewerentz: BTU Cottbus
+  * Software analysis and metrics
+  * 2,840 citations, h-index of 24
+* "Voronoi treemaps for the visualization of software metrics"
+  * *SoftVis '05: Proceedings of the 2005 ACM symposium on Software visualization* (Conference in St. Louis, Missouri)
+  * Citations: 281 on [Google Scholar](https://scholar.google.com/scholar?cites=13552651406860346795&as_sdt=5,36&sciodt=0,36&hl=en), 103 and 3,151 downloads at [ACM](https://dl.acm.org/doi/abs/10.1145/1056018.1056041)
+
+---
+
+# Research questions
+
+* How can we better represent source code structure visually?
+* How can we maximize comprehension when visualizing metrics and software hierarchy?
+
+--
+
+## Motivating factors
+
+* Software systems are complex and nested
+* Software metrics are quantitative abstractions
+* Software visualization creates representations and can focus on relational structures, combine metrics, etc.
+
+---
+
+# Hierarchy visualizations
+
+* Adapting Treemaps to enable meaningful representation of metrics
+* Limits of rectangular geometry hinder readability
+* Difficult to represent relationships with boundaries
+
+.center.image-90[![Figures 3 and 4]({{ site.baseurl }}/assets/figs3and4.png)]
+
+---
+
+# Hierarchy visualizations
+
+* Adapting Treemaps to enable meaningful representation of metrics
+* Limits of rectangular geometry hinder readability
+* Difficult to represent relationships with boundaries
+
+.center.image-40[![Figures 3 and 4]({{ site.baseurl }}/assets/fig9.png)]
+
+---
+
+# Proposed system
+
+* Using arbitrary and compact polygons facilitates readability
+  * Boundaries can better show relationships
+* Approximations and sampling alleviate computational issues
+* Color, transparency, and text labels can add metric information
+
+.center.image-40[![org/jfree]({{site.baseurl}}/assets/jfree.png)]
+
+---
+
+# Process
+
+* Automatic hierarchy extraction from OO source code
+* Computation of Voronoi tessellations
+  * Iterative and potentially costly process
+  * Numeric instead of an analytical approach
+* Build polygons from curves
+  * Find curves between adjacent circles
+  * Select the curves relevant to the polygons
+  * Clip them to the polygons' borders to create shapes
+
+---
+
+# Additional user-centric adaptations
+
+* Allowing user interaction
+  * Interactivity through zooming
+  * Ability to explore data
+
+.center.image-50[![Figure 10]({{site.baseurl}}/assets/fig10.png)]
+
+---
+
+# Additional user-centric adaptations
+
+* Information hiding and scoping
+  * Using increasing transparency to visually render hierarchy
+  * Lower levels are less opaque or hidden
+  * Ability to animate according or adjust based on a transparency threshold
+
+.center.image-40[![Figure 11]({{site.baseurl}}/assets/fig11.png)]
+
+---
+
+# Conclusions and future work
+
+* Future goals
+  * Develop alternative and more efficient algorithms
+  * Integrate into a software analysis environment
+
+* Thoughts
+  * Powerful use of visualization, allows for multidimensional analysis
+  * Like any visualization (or representation or metric), limited by clarity and creativity of the analyst
+  * How have the authors found this to be useful? What observations did it allow and what changes did it catalyze?
