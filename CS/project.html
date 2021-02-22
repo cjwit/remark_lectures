@@ -1,0 +1,169 @@
+---
+layout: presentation
+title: Project presentation
+---
+
+class: middle, center
+
+# Western Models as Limitations and Bias in Music Analysis Tool Design
+
+## Christopher Witulski
+
+---
+
+# About music, motivations
+
+* Exists as sound, live or recorded
+* Holds semantic meaning based in traditions
+
+## The problem: bias in theory/analysis methods
+
+* Based in Western tradition
+* Organized around European notation and conceptualizations
+* Prioritize some values and erase others
+* Embed bias and limit analytical potential
+
+---
+
+# Research questions
+
+* Connecting music theory discourses to computational tools
+  * How we conceptualize musical value... and encode it
+  * Framed as motivation for a larger action research project
+  * From analysis to critical theory research to a tool presentation
+
+--
+* RQ1: How do computational systems conceptualize and represent musical knowledge?
+* RQ2: How do software design choices (including data representation and system architecture) enable or limit computational analysis?
+* RQ3: How are researchers adapting system designs to address evolving user needs/requirements and technical capabilities?
+
+---
+
+# Music processing and analysis
+
+* Methods and software as tools
+  * They do not interpret meaning, users do
+* Some approaches to music analysis and example tasks
+  * Signal processing (considering music as sound): Recording, playback, audio synthesis
+  * Music information retrieval (describing the sound, feature extraction): Determining melodies, key areas; higher-level analysis related to genre, mood, perception
+  * Orthography (notating music): Composition and transcription, graphical representation of music as a score or other form of visualization
+  * Computational analysis (music theory): Pattern recognition and corpus analysis
+  * Metadata analysis: "big data"-oriented approaches to usage statistics or similar, combined with MIR or other information (discussed separately in the paper)
+---
+
+# Software design and representing music
+
+## Two common tools: Humdrum and music21
+
+* Demonstrate standard techniques
+* Depend on conceptual models based in Western history
+* Incorporate flexibility while maintaining limitations
+
+---
+
+# Humdrum
+
+* Developed by David Huron, Ohio State University
+* Pipe and filter architecture
+  * Toolkit designed to work alongside UNIX commands
+  * Imports, manipulates, and exports text data
+  * Chaining tools together allows for flexibility
+* Representation in text files
+  * Vertical columns (spines) encode voices
+  * TSV format allows for other information (like performance data)
+  * Extensive flexibility for metadata
+  * Often uses `**kern` as a standard
+
+---
+
+# Humdrum
+
+.center.image-40[![A short musical example]({{ site.baseurl }}/assets/scoreExample.png)]
+
+```bash
+**kern    **kern    **kern
+*staff1   *staff1   *staff1
+*M4/4     *M4/4     *M4/4
+*clefF4   *clefG2   *clefG2
+=1-       =1-       =1-
+C2        e4        cc4
+.         g4        b4
+F4        f2        a4
+G4        .         b4
+=2        =2        =2
+C1        e1        cc1
+==        ==        ==
+*-        *-        *-
+```
+
+---
+
+# Humdrum
+
+.center.image-40[![A short musical example]({{ site.baseurl }}/assets/scoreExample.png)]
+
+```bash
+$ extract -f 2 example | mint | grep '[+-][mMP]'
++m3
+-M2
+-m2  
+```
+
+---
+
+# music21
+
+* Developed by Michael Cuthbert's team at MIT
+* Object oriented architecture
+  * Embeds musical concepts and analytical functionality into nested class objects
+  * Replicates hierarchical conceptual models of Western music
+  * Music has melodies that have notes that have pitches
+* Python library
+  * Allows for data processing, visualization using other Python tools
+  * Extensive parsers (14% of LOC) and included corpora (80% of LOC)
+
+---
+
+# music21 
+
+```python
+for i in range(len(notes) - 1):
+    n1 = notes[i]
+    n2 = notes[i + 1]
+    thisInt = interval.Interval(n1, n2)
+    print(thisInt.directedNiceName)
+# Returns:
+# Ascending Minor Third
+# Descending Major Second
+# Descending Minor Second
+```
+
+.center.image-70[![music21 sequence diagram]({{ site.baseurl }}/assets/music21sequence.png)]
+
+---
+
+# Signal processing approaches
+
+* Tools that operate on the sound itself
+  * MIR techniques, extensive plugin systems
+  * Research on where musically meaningful content is within the sound
+  * Includes pitch detection, rhythmic analysis, timbre
+  * Still largely connected to Western ideas in how they connect to other tools or are used by researchers and software developers
+
+.center.image-60[![Archbishop Samuel David chant example]({{site.baseurl}}/assets/david-spec.png)]
+
+---
+
+# Conclusions and future work
+
+* Discussion of efforts to overcome these limitations
+  * Architectural designs focused on usability, changing understandings of user requirements
+  * Efforts to encode more rich data into system design (movement, performance, etc.)
+  * Incorporations of interactive analysis systems
+  * Use of machine learning and Big Data approaches to discover new relationships
+
+--
+* Future work: interdisciplinary and inclusive architectures
+  * Using automatic music transcription with ethnographically-derived conceptions of Middle Eastern improvisation
+  * Using signal processing, structuring orthographic meaning through decision making systems that are determined by and useful to Middle Eastern music practitioners
+  * Connecting these systems to the values of the traditions being analyzed
