@@ -1,0 +1,132 @@
+---
+layout: presentation
+title: Broken Authentication
+---
+
+class: middle, center
+
+# Broken Authentication
+
+## Software Weaknesses, CS 6310
+
+## Given by Christopher Witulski
+
+---
+
+# Description of the weakness(es)
+
+* Collection of weaknesses allowing impersonation
+  * Session management
+  * Credential management
+
+* Attack types range broadly
+  * Credential stuffing
+  * Impersonating sessions
+
+* Responsible for many high-profile attacks
+  * Now included in OWASP Top 10
+
+---
+
+# Types of attacks: credential stuffing
+
+* TurboTax, Disney+, Ring home cameras
+* Comprise nearly half of Auth0's login requests
+* From reuse of passwords
+  * A form of "account takeover"
+  * Initial password gained from hacked database, published database, phishing attack, etc.
+  * Attackers try username/password combinations in other websites through automation
+* May result in user lockout, fraudulent purchases, IP theft, and accounts being sold
+
+---
+
+# Similar to other password-related attacks
+
+* Password spraying
+  * Trying common and weak passwords
+  * Can avoid brute-force protections by rotating user attempts instead of password attempts
+* Phishing
+  * Spoofing a login page to trick users into sharing credentials
+
+---
+
+# Types of attacks: credential stuffing 
+
+* System approaches to mitigation:
+  * Multi-factor authentication
+  * Bruce force protections (limiting automated botnets, easily circumvented)
+  * Protections after password breaches (additional verification, notifications, forced password changes)
+* Password-centric approaches to mitigation:
+  * Require strong passwords
+  * Hash passwords and do not store them as plain text
+  * Require new passwords after allotted time
+  * Phishing training
+
+---
+
+# Types of attacks: session management
+
+* Session associates network transactions with a specific user
+  * Allows tracking of activity across authenticated use periods (logins)
+  * Usually held as cookies or URL parameters
+* Session management relates to the definition of session parameters
+  * How long before automatic log out?
+  * How are session IDs issued or revoked?
+  * how are they linked to a user's IP address?
+* Longer sessions improve user experience, but require a balance
+  * "A hijacked session ID is as strong as a stolen login credential"
+
+---
+
+# Types of attacks: session management
+
+* Session hijacking: steal session IDs to impersonate users
+  * Continuing a session after a user forgets to log out on a public computer
+* Session ID URL rewriting: session is encoded into URL via parameters
+  * Anyone who can see the URL (via insecure Wi-Fi, for example) can copy the URL and join the session
+  * Led to "Zoom-bombing"
+* Session fixation: using the same session ID before and after authentication
+  * Attacker sends a link with a session ID that requires log in and is able to use that session after the user follows it to authenticate
+
+---
+
+# Types of attacks: session management
+
+* Mitigation includes: 
+  * Consider limiting session length where appropriate (depends on the domain)
+  * Rotate session IDs: create new IDs after login to prevent fixation
+  * Invalidate session IDs: prevents reuse after the conclusion of a session
+  * Use cookies instead of URLs: URLs are easily exposed
+  * Anomaly detection (are logins geographically distant, for example?)
+
+---
+
+
+* Must include a description of the weakness, how to identify it and possible mitigation. A sample code example or equivalent shall be included. 
+* Five extra credit will be awarded to students who can use a real vulnerability (e.g. CVE) as an example and explain the code error, affected components, consequences and the fix.
+* PPT slides are required, while you are welcome to include other aids (e.g. simulation).
+* 10 -15minutes for each Weakness.
+
+---
+
+# Recent vulnerabilities
+
+### Session management
+
+* [CVE-2021-21339](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-21339): A PHP-based CMS stored session IDs as plain text. They were inaccessible directly, but could be accessed through SQL injection elsewhere in the system.
+* [CVE-2020-6292](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6292): SAP (an enterprise software company) had a system that did not invalidate session cookies.
+
+### Credential management
+
+* Previously mentioned major hacks
+* [CVE-2017-11743](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11743): The MEDHOST Connex system had a hard-coded administrative credential that could not be changed, exposing patient information to anyone who knew the *hard coded* admin account password ($K8t1ng).
+
+---
+
+# References
+
+[1] D. Poza, “What Is Broken Authentication?,” authO Blog, Aug. 20, 2020. <https://auth0.com/blog/what-is-broken-authentication/> (accessed Mar. 31, 2021).
+
+[1] D. Poza, “What Is Credential Stuffing?,” *authO Blog*, Mar. 09, 2020. <https://auth0.com/blog/what-is-credential-stuffing/> (accessed Mar. 30, 2021).
+
+
