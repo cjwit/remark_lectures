@@ -28,6 +28,20 @@ class: middle, center
 
 ---
 
+# Potential impacts
+
+* Widespread because of design and implementation flaws
+* Broad range
+  * Due to compromised login access
+* Could include:
+  * Money laundering (especially in banking)
+  * Social security fraud (records systems)
+  * Identity theft
+  * Intellectual property theft
+  * Access to sensitive information/records
+
+---
+
 # Types of attacks: credential stuffing
 
 * TurboTax, Disney+, Ring home cameras
@@ -53,13 +67,14 @@ class: middle, center
 # Types of attacks: credential stuffing 
 
 * System approaches to mitigation:
-  * Multi-factor authentication
-  * Bruce force protections (limiting automated botnets, easily circumvented)
+  * Multi-factor authentication (better than password rotation)
+  * Bruce force protections (limiting automated botnets, log failures)
   * Protections after password breaches (additional verification, notifications, forced password changes)
 * Password-centric approaches to mitigation:
-  * Require strong passwords
+  * Require strong passwords (avoid top [10000 worst](https://github.com/danielmiessler/SecLists/tree/master/Passwords), follow [evidence-based policies](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret))
+  * Avoid knowledge-based password recovery
+  * Do not use default passwords
   * Hash passwords and do not store them as plain text
-  * Require new passwords after allotted time
   * Phishing training
 
 ---
@@ -94,18 +109,36 @@ class: middle, center
 
 * Mitigation includes: 
   * Consider limiting session length where appropriate (depends on the domain)
+  * Use strong server-side session manager
   * Rotate session IDs: create new IDs after login to prevent fixation
-  * Invalidate session IDs: prevents reuse after the conclusion of a session
+  * Invalidate session IDs after logout, idle, absolute timeout: prevents reuse after the conclusion of a session
   * Use cookies instead of URLs: URLs are easily exposed
   * Anomaly detection (are logins geographically distant, for example?)
 
 ---
 
+# Examples
 
-* Must include a description of the weakness, how to identify it and possible mitigation. A sample code example or equivalent shall be included. 
-* Five extra credit will be awarded to students who can use a real vulnerability (e.g. CVE) as an example and explain the code error, affected components, consequences and the fix.
-* PPT slides are required, while you are welcome to include other aids (e.g. simulation).
-* 10 -15minutes for each Weakness.
+* Authentication and session management is difficult
+  * Increasingly handled externally: FB, Google, Auth0, etc.
+
+### FB's access token
+
+```js
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    var accessToken = response.authResponse.accessToken;
+  } 
+});
+```
+
+### FB's logout
+
+```js
+FB.logout(function(response) {
+  // user is now logged out
+});
+```
 
 ---
 
@@ -116,17 +149,26 @@ class: middle, center
 * [CVE-2021-21339](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-21339): A PHP-based CMS stored session IDs as plain text. They were inaccessible directly, but could be accessed through SQL injection elsewhere in the system.
 * [CVE-2020-6292](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6292): SAP (an enterprise software company) had a system that did not invalidate session cookies.
 
+---
+
+# Recent vulnerabilities
+
 ### Credential management
 
 * Previously mentioned major hacks
+  * TurboTax, Disney+, Ring home cameras
 * [CVE-2017-11743](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11743): The MEDHOST Connex system had a hard-coded administrative credential that could not be changed, exposing patient information to anyone who knew the *hard coded* admin account password ($K8t1ng).
 
 ---
 
 # References
 
-[1] D. Poza, “What Is Broken Authentication?,” authO Blog, Aug. 20, 2020. <https://auth0.com/blog/what-is-broken-authentication/> (accessed Mar. 31, 2021).
+[1] OWASP, "A2:2017-Broken Authentication," *OWASP Top Ten 2017*, 2017. <https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication> (accessed Mar. 31, 2021).
 
-[1] D. Poza, “What Is Credential Stuffing?,” *authO Blog*, Mar. 09, 2020. <https://auth0.com/blog/what-is-credential-stuffing/> (accessed Mar. 30, 2021).
+[2] CheatSheets Series Team, "Session Management Cheat Sheet," *OWASP Cheat Sheet Series*, 2021. <https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html> (accessed Mar. 31, 2021).
 
+[3] D. Poza, “What Is Broken Authentication?,” *authO Blog*, Aug. 20, 2020. <https://auth0.com/blog/what-is-broken-authentication/> (accessed Mar. 30, 2021).
 
+[4] D. Poza, “What Is Credential Stuffing?,” *authO Blog*, Mar. 09, 2020. <https://auth0.com/blog/what-is-credential-stuffing/> (accessed Mar. 31, 2021).
+
+[5] Facebook, "Login Security," *FACEBOOK for Developers*, 2021. <https://developers.facebook.com/docs/facebook-login/security> (accessed Mar. 31, 2021).
